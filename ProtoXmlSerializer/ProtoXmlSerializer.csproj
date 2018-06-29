@@ -152,8 +152,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ISerializer.cs" />
     <Compile Include="Models\CustInfoSerialize.cs" />
     <Compile Include="Objects\CustomerInfo.cs" />
+    <Compile Include="Objects\ProtoSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
