@@ -46,6 +46,15 @@ namespace Models
         [Display(Name = "Zip code"), Required, MinLength(5, ErrorMessage = "Zip code must be at least five digits.")]
         public int ZipCode { get; set; }
 
+        [Display(Name ="Serialize to:")]
+        public SerializeTo serializeTo { get; set; }
+
+        public enum SerializeTo
+        {
+            Protobuf,
+            XML,
+            Json
+        }
         public string Serialized { get; set; }
 
     }

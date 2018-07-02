@@ -154,8 +154,9 @@
     </Compile>
     <Compile Include="Interfaces\ISerializer.cs" />
     <Compile Include="Models\CustInfoSerialize.cs" />
-    <Compile Include="Objects\CustomerInfo.cs" />
+    <Compile Include="Objects\JsonSerializer.cs" />
     <Compile Include="Objects\ProtoSerializer.cs" />
+    <Compile Include="Objects\XMLSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
