@@ -1,4 +1,5 @@
-﻿using ProtoXmlSerializer.Interfaces;
+﻿using Models;
+using ProtoXmlSerializer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,18 +11,20 @@ using System.Xml.Serialization;
 
 namespace ProtoXmlSerializer.Objects
 {
-    public class XmlSerializer<T> : ISerializer<T>
+    public class XmlSerializer : ISerializer
     {
+
+
         private readonly XmlSerializer _serializer = null;
         private readonly XmlSerializerNamespaces _ns = null;
 
         public XmlSerializer()
         {
-            _serializer = new XmlSerializer(typeof(T));
+            _serializer = new XmlSerializer();
             _ns = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
         }
 
-        public string Serialize(T obj)
+        public string Serialize(CustomerInfo obj)
         {
             var builder = new StringBuilder();
 
@@ -36,14 +39,19 @@ namespace ProtoXmlSerializer.Objects
             return builder.ToString();
         }
 
-        public T Deserialize(string data)
+        private void Serialize(XmlWriter writer, CustomerInfo obj, XmlSerializerNamespaces ns)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CustomerInfo Deserialize(string data)
         {
             var settings = new XmlReaderSettings { CheckCharacters = false };
 
             using (var reader = new StringReader(data))
             using (var xmlReader = XmlReader.Create(reader, settings))
             {
-                return (T)_serializer.Deserialize(xmlReader);
+                return (CustomerInfo)_serializer.Deserialize(xmlReader.ToString());
             }
         }
     }

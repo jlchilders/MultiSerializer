@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Models;
+using Newtonsoft.Json;
 using ProtoXmlSerializer.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,10 +8,10 @@ using System.Web;
 
 namespace ProtoXmlSerializer.Objects
 {
-    public sealed class JsonSerializer<T> : ISerializer<T>
+    public class JsonSerializer : ISerializer
     {
-        public T Deserialize(string value) => JsonConvert.DeserializeObject<T>(value);
+        public CustomerInfo Deserialize(string value) => JsonConvert.DeserializeObject<CustomerInfo>(value);
 
-        public string Serialize(T value) => JsonConvert.SerializeObject(value);
+        public string Serialize(CustomerInfo value) => JsonConvert.SerializeObject(value);
     }
 }

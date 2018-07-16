@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProtoXmlSerializer.Interfaces
 {
-    public interface ISerializer<T>
+    public interface ISerializer
     {
-        string Serialize(T obj);
-        T Deserialize(string data);
+        string Serialize(CustomerInfo obj);
+        CustomerInfo Deserialize(string data);
     }
 }

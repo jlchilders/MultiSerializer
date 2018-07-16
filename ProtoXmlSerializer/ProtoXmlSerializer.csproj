@@ -148,12 +148,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CustInfoController.cs" />
+    <Compile Include="CustInfoSerializerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ISerializer.cs" />
-    <Compile Include="Models\CustInfoSerialize.cs" />
+    <Compile Include="ConcreteCustInfoSerializerFactory.cs" />
+    <Compile Include="Models\CustomerInfo.cs" />
     <Compile Include="Objects\JsonSerializer.cs" />
     <Compile Include="Objects\ProtoSerializer.cs" />
     <Compile Include="Objects\XMLSerializer.cs" />

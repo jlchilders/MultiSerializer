@@ -4,13 +4,17 @@ using ProtoBuf;
 namespace Models
 {
     [ProtoContract]
-    public class CustInfoSerialize
+    public class CustomerInfo
     {
         public string ErrorMessage { get; set; }
 
-        public CustInfoSerialize(int id, string firstName, string lastName, string streetAddress, string city, string state, int zip)
+        public CustomerInfo()
         {
-            Id = id;
+
+        }
+        public CustomerInfo(int id, string firstName, string lastName, string streetAddress, string city, string state, int zip)
+        {
+            //Id = id;
             FirstName = firstName;
             LastName = lastName;
             StreetAddress = streetAddress;
@@ -19,35 +23,37 @@ namespace Models
             ZipCode = zip;
         }
 
-        [ProtoMember(1)]
-        public int Id { get; set; }
+        //[ProtoMember(1)]
+        //public int Id { get; set; }
 
-        [ProtoMember(2)]
+        [ProtoMember(1)]
         [Display(Name = "First name"), Required]
         public string FirstName { get; set; }
 
-        [ProtoMember(3)]
+        [ProtoMember(2)]
         [Display(Name = "Last name"), Required]
         public string LastName { get; set; }
 
-        [ProtoMember(4)]
+        [ProtoMember(3)]
         [Display(Name = "Street address"), Required]
         public string StreetAddress { get; set; }
 
-        [ProtoMember(5)]
+        [ProtoMember(4)]
         [Required]
         public string City { get; set; }
 
-        [ProtoMember(6)]
+        [ProtoMember(5)]
         [Required]
         public string State { get; set; }
 
-        [ProtoMember(7)]
-        [Display(Name = "Zip code"), Required, MinLength(5, ErrorMessage = "Zip code must be at least five digits.")]
+        [ProtoMember(6)]
+        [Display(Name = "Zip code"), Required/*, MinLength(5, ErrorMessage = "Zip code must be at least five digits.")*/]
         public int ZipCode { get; set; }
 
         [Display(Name ="Serialize to:")]
-        public SerializeTo serializeTo { get; set; }
+        public SerializeTo SerializeDirection { get; set; }
+
+        public string SelectedDirection { get; set; }
 
         public enum SerializeTo
         {
