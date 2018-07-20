@@ -14,44 +14,31 @@ namespace ProtoXmlSerializer.Objects
     public class XmlSerializer : ISerializer
     {
 
-
-        private readonly XmlSerializer _serializer = null;
-        private readonly XmlSerializerNamespaces _ns = null;
-
-        public XmlSerializer()
-        {
-            _serializer = new XmlSerializer();
-            _ns = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
-        }
-
         public string Serialize(CustomerInfo obj)
         {
             var builder = new StringBuilder();
-
             var settings = new XmlWriterSettings();
             settings.OmitXmlDeclaration = true;
             settings.CheckCharacters = false;
+            settings.Indent = true;
             using (var writer = XmlWriter.Create(builder, settings))
-            {
-                _serializer.Serialize(writer, obj, _ns);
+            { 
+                System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(typeof(CustomerInfo));
+                x.Serialize(writer, obj);
             }
-
             return builder.ToString();
         }
 
-        private void Serialize(XmlWriter writer, CustomerInfo obj, XmlSerializerNamespaces ns)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public CustomerInfo Deserialize(string data)
         {
             var settings = new XmlReaderSettings { CheckCharacters = false };
+            XmlSerializer serializer = new XmlSerializer();
 
             using (var reader = new StringReader(data))
             using (var xmlReader = XmlReader.Create(reader, settings))
             {
-                return (CustomerInfo)_serializer.Deserialize(xmlReader.ToString());
+                return (CustomerInfo)serializer.Deserialize(xmlReader.ToString());
             }
         }
     }

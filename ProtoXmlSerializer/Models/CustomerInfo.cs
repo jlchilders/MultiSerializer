@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
 using ProtoBuf;
 namespace Models
 {
@@ -12,9 +14,9 @@ namespace Models
         {
 
         }
-        public CustomerInfo(int id, string firstName, string lastName, string streetAddress, string city, string state, int zip)
+        public CustomerInfo(string firstName, string lastName, string streetAddress, string city, string state, int zip)
         {
-            //Id = id;
+ 
             FirstName = firstName;
             LastName = lastName;
             StreetAddress = streetAddress;
@@ -23,8 +25,6 @@ namespace Models
             ZipCode = zip;
         }
 
-        //[ProtoMember(1)]
-        //public int Id { get; set; }
 
         [ProtoMember(1)]
         [Display(Name = "First name"), Required]
@@ -50,9 +50,11 @@ namespace Models
         [Display(Name = "Zip code"), Required/*, MinLength(5, ErrorMessage = "Zip code must be at least five digits.")*/]
         public int ZipCode { get; set; }
 
+        [XmlIgnoreAttribute, JsonIgnore]
         [Display(Name ="Serialize to:")]
         public SerializeTo SerializeDirection { get; set; }
 
+        [JsonIgnore]
         public string SelectedDirection { get; set; }
 
         public enum SerializeTo
@@ -61,6 +63,8 @@ namespace Models
             XML,
             Json
         }
+
+        [JsonIgnore]
         public string Serialized { get; set; }
 
     }

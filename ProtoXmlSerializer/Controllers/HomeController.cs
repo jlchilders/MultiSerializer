@@ -8,13 +8,13 @@ using System.Web.Mvc;
 
 namespace ProtoXmlSerializer.Controllers
 {
-    public class CustInfoController : Controller
+    public class HomeController : Controller
     {
 
 
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         public ActionResult Submit(CustomerInfo model)
@@ -34,11 +34,13 @@ namespace ProtoXmlSerializer.Controllers
             }
             catch (Exception ex)
             {
-
+                TempData["ErrorMsg"] = ex.Message;
             }
 
             return View("Index", model);
         }
+
+        //TODO: Add button to revert to plain text
 
     }
 }
