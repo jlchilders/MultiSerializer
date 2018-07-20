@@ -45,9 +45,13 @@
                 @Html.LabelFor(m => m.SerializeDirection, new { @class = "control-label" })
                 @Html.EnumDropDownListFor(m => m.SerializeDirection, new { @class = "form-control", @style = "width:25%" })
             </div>
-            <div class="form-group">
+            <div class="btn-toolbar">
                 <input type="submit" name="serialize" formaction=@Url.Action("Submit") formmethod="post"
                        value="Serialize" id="btnSubmit" class="btn btn-primary col-lg-2" />
+                
+                    <input type="submit" name="clear" formaction=@Url.Action("Clear") formmethod="post"
+                           value="Clear" id="btnClear" class="btn btn-light col-lg-2" />
+             
             </div>
             </div>
             <div class="col-md-6">       
@@ -57,6 +61,11 @@
                 @Html.TextAreaFor(m => m.Serialized, new { @class = "form-control", @rows = "12", @width = "100%" })
 
             </div>
+                <div class="form-group">
+                    <input type="submit" name="revert" format=@Url.Action("Revert") formmethod="post"
+                           value="Revert to text" id="btnRevert" class="btn btn-success col-lg-3" />
+                </div>
+                
         </div>
     </div>
 
