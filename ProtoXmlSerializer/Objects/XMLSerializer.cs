@@ -29,7 +29,7 @@ namespace ProtoXmlSerializer.Objects
             return builder.ToString();
         }
 
-        
+        //TODO: Work out deserialize method. getting stack overflow exception
         public CustomerInfo Deserialize(string data)
         {
             var settings = new XmlReaderSettings { CheckCharacters = false };

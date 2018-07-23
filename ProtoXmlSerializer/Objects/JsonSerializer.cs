@@ -12,6 +12,6 @@ namespace ProtoXmlSerializer.Objects
     {
         public CustomerInfo Deserialize(string value) => JsonConvert.DeserializeObject<CustomerInfo>(value);
 
-        public string Serialize(CustomerInfo value) => JsonConvert.SerializeObject(value);
+        public string Serialize(CustomerInfo value) => JsonConvert.SerializeObject(value, Formatting.Indented);
     }
 }

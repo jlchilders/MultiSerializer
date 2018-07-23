@@ -40,7 +40,35 @@ namespace ProtoXmlSerializer.Controllers
             return View("Index", model);
         }
 
-        //TODO: Add button to revert to plain text
+        public ActionResult Clear(CustomerInfo model)
+        {
+            ModelState.Clear();
 
+            return View("Index", new CustomerInfo());
+        }
+       
+        [HttpPost]
+        public ActionResult Revert(CustomerInfo model)
+        {
+            try
+            {
+                //var customerInfo = new CustomerInfo();
+                CustInfoSerializerFactory serializationFactory = new ConcreteCustInfoSerializerFactory();
+
+                string serializeTo = model.SerializeDirection.ToString();
+                ISerializer direction = serializationFactory.GetSerializer(serializeTo);
+                string toRevert = model.Serialized;
+                var result = direction.Deserialize(toRevert);
+                model.Serialized = result.ToString();
+                ModelState.Clear();
+
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMsg"] = ex.Message;
+            }
+
+            return View("Index", model);
+        }
     }
 }

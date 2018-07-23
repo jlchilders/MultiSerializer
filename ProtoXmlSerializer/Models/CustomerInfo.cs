@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text;
 using System.Web.Mvc;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
@@ -64,8 +65,16 @@ namespace Models
             Json
         }
 
-        [JsonIgnore]
+        [JsonIgnore, AllowHtml]
         public string Serialized { get; set; }
+
+        public string ToString()
+        {
+            StringBuilder builder = new StringBuilder("");
+            builder = builder.AppendFormat("{0} {1}, {2}, {3}, {4} {5}", FirstName, LastName, StreetAddress, City, State, ZipCode);
+            return builder.ToString();
+      
+        }
 
     }
 }
