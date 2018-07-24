@@ -17,24 +17,30 @@ namespace ProtoXmlSerializer.Controllers
             return View("Index");
         }
 
+        public ActionResult About()
+        {
+            return View("About");
+        }
+
         public ActionResult Submit(CustomerInfo model)
         {
+            if (ModelState.IsValid)
+            { 
             try
             {
-                //var customerInfo = new CustomerInfo();
+                model.Serialized = null;
                 CustInfoSerializerFactory serializationFactory = new ConcreteCustInfoSerializerFactory();
-
                 string serializeTo = model.SerializeDirection.ToString();
                 ISerializer direction = serializationFactory.GetSerializer(serializeTo);
                 string result = direction.Serialize(model);
                 model.Serialized = result;
                 ModelState.Clear();
 
-
             }
             catch (Exception ex)
             {
                 TempData["ErrorMsg"] = ex.Message;
+            }
             }
 
             return View("Index", model);

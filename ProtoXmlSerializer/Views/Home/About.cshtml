@@ -1,7 +1,12 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "About the multi-serializer";
+    ViewBag.Message = "To use:";
 }
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
+<p>The multi-serializer project accepts an object created from the form entry and serializes it to a Protobuf, XML, or JSON string.
+    It can also deserialize the results into a text string.</p>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<p>Enter a name and address into the form. Choose how to serialize it from the drop-down, and click the 'Serialize' button.</p>
+<p>Select the 'Revert' button to deserialize to text.</p>
+<p>Select the 'Clear' button to clear entire form.</p>

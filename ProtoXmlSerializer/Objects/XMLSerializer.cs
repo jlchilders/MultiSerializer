@@ -33,12 +33,12 @@ namespace ProtoXmlSerializer.Objects
         public CustomerInfo Deserialize(string data)
         {
             var settings = new XmlReaderSettings { CheckCharacters = false };
-            XmlSerializer serializer = new XmlSerializer();
+            System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(CustomerInfo));
 
             using (var reader = new StringReader(data))
             using (var xmlReader = XmlReader.Create(reader, settings))
             {
-                return (CustomerInfo)serializer.Deserialize(xmlReader.ToString());
+                return (CustomerInfo)serializer.Deserialize(xmlReader);
             }
         }
     }

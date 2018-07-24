@@ -6,6 +6,19 @@
 
 <h2>Serializer</h2>
 
+@if (TempData["ErrorMsg"] != null)
+{
+    <div class="alert alert-danger alert-dismissable col-md-8" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @TempData["ErrorMsg"]
+    </div>
+}
+
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
 @using (Html.BeginForm())
 
 {
@@ -48,24 +61,24 @@
             <div class="btn-toolbar">
                 <input type="submit" name="serialize" formaction=@Url.Action("Submit") formmethod="post"
                        value="Serialize" id="btnSubmit" class="btn btn-primary col-lg-2" />
-                
-                    <input type="submit" name="clear" formaction=@Url.Action("Clear") formmethod="post"
-                           value="Clear" id="btnClear" class="btn btn-light col-lg-2" />
-             
+
+                <input type="submit" name="clear" formaction=@Url.Action("Clear") formmethod="post"
+                       value="Clear" id="btnClear" class="btn btn-light col-lg-2" />
+
             </div>
-            </div>
-            <div class="col-md-6">       
+        </div>
+        <div class="col-md-6">
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Serialized, new { @class = "control-label" })
                 @Html.TextAreaFor(m => m.Serialized, new { @class = "form-control", @rows = "12", @width = "100%" })
 
             </div>
-                <div class="form-group">
-                    <input type="submit" name="revert" formaction=@Url.Action("Revert") formmethod="post"
-                           value="Revert to text" id="btnRevert" class="btn btn-success col-lg-3" />
-                </div>
-                
+            <div class="form-group">
+                <input type="submit" name="revert" formaction=@Url.Action("Revert") formmethod="post"
+                       value="Revert to text" id="btnRevert" class="btn btn-success col-lg-3" />
+            </div>
+
         </div>
     </div>
 
