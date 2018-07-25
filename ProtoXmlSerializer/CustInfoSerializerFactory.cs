@@ -1,12 +1,12 @@
 ﻿using Models;
-using ProtoXmlSerializer.Interfaces;
+using MultiSerializer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using static Models.CustomerInfo;
 
-namespace ProtoXmlSerializer
+namespace MultiSerializer
 {
     public abstract class CustInfoSerializerFactory
     {

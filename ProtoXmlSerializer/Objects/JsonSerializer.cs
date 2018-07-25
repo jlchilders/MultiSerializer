@@ -1,12 +1,12 @@
 ﻿using Models;
 using Newtonsoft.Json;
-using ProtoXmlSerializer.Interfaces;
+using MultiSerializer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ProtoXmlSerializer.Objects
+namespace MultiSerializer.Objects
 {
     public class JsonSerializer : ISerializer
     {

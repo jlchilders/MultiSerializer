@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace ProtoXmlSerializer
+namespace MultiSerializer
 {
     public class RouteConfig
     {

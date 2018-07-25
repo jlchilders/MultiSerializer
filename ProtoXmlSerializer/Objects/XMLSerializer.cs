@@ -1,5 +1,5 @@
 ﻿using Models;
-using ProtoXmlSerializer.Interfaces;
+using MultiSerializer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +9,7 @@ using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace ProtoXmlSerializer.Objects
+namespace MultiSerializer.Objects
 {
     public class XmlSerializer : ISerializer
     {
@@ -29,7 +29,6 @@ namespace ProtoXmlSerializer.Objects
             return builder.ToString();
         }
 
-        //TODO: Work out deserialize method. getting stack overflow exception
         public CustomerInfo Deserialize(string data)
         {
             var settings = new XmlReaderSettings { CheckCharacters = false };
